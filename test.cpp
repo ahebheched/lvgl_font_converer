@@ -5,16 +5,22 @@
 #include <cstdio>
 #include <iostream>
 
-#include "font.h"
+#include "font3.h"
 
 using namespace std;
 
 int a;
 
+FILE *fp = fopen("font_.h", "w+");
+
 int main() {
     conver_lvglfont cl(&font_dsc, sizeof(glyph_dsc)/sizeof(glyph_dsc[0]));
-    cout << sizeof(font_dsc.glyph_dsc) << endl;
-    cout << font_dsc.glyph_dsc[10].bitmap_index << endl;
-    printf("Hello World\n");
-    cin >> a;
+    char16_t ch = u'你';
+    cout << "ch: " << (int)ch << endl;
+    // cout << sizeof(font_dsc.glyph_dsc) << endl;
+    // cout << font_dsc.glyph_dsc[10].bitmap_index << endl;
+    // printf("Hello World\n");
+    // fprintf(fp, "hello world\n");
+    // fclose(fp);
+    // cin >> a;
 }

@@ -3,7 +3,9 @@ project(showfontimg)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(showfontimg main.cpp)
+add_executable(showfontimg main.cpp
+        font2.h
+        font3.h)
 
 target_include_directories(showfontimg PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}

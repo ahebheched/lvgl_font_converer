@@ -64,21 +64,26 @@ class conver_lvglfont {
 public:
     conver_lvglfont(const lv_font_fmt_txt_dsc_t *glyph_dsc, uint16_t font_mum);
 
+    static void print_font(const eink_font_t &font);
+    static void print_eink_font(const map<uint16_t, eink_font_t> &eink_font);
+    void print_eink_font_file(const map<uint16_t, eink_font_t> &eink_font);
+
 private:
     static void format_font_size(int *w, int *h);
-    eink_font_t format_font(const uint8_t *glyph_bitmap, const int w, const int h);
-    void bitmap_to_draw(const uint8_t *bitmap, const int w, const int h);
-    void draw_to_bitmap(uint8_t *bitmap, const int w, const int h) const;
-    void print_draw(const int w, const int h) const;
-    void print_font(const eink_font_t &font) const;
+    eink_font_t format_font(const uint8_t *glyph_bitmap, int w, int h, int off_x, int off_y);
+    void bitmap_to_draw(const uint8_t *bitmap, int w, int h);
+    void bitmap_to_draw(const uint8_t *bitmap, int w, int h, int off_x, int off_y);
+    void draw_to_bitmap(uint8_t *bitmap, int w, int h) const;
+    void print_draw(int w, int h) const;
     void rotate_font(eink_font_t *font, int angle);
     void flip_font(eink_font_t *font, int style);
     void reverse_font(eink_font_t *font);
-
     map<uint16_t, eink_font_t> eink_font;
     uint16_t font_num;
     uint16_t cmap_num;
     uint8_t draw[200][200];
     uint8_t draw_[200][200];
+
+    // char font_name[40];
 };
 
